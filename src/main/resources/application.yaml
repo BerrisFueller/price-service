@@ -1,0 +1,17 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+
+
+routing-key:
+  price: price_key
+
+queue:
+  price: price_queue
+
+xchange:
+  name: exchange_rpc
+
+server:
+  port: 8085
