@@ -1,16 +1,14 @@
-package com.example.priceservice.server;
+package com.example.priceservice.consumer;
 
-import com.example.priceservice.server.DTO.PriceRequest;
-import com.example.priceservice.server.DTO.PriceResponse;
+import com.example.priceservice.consumer.dto.PriceRequest;
+import com.example.priceservice.consumer.dto.PriceResponse;
 import com.example.priceservice.service.PriceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-
 @Slf4j
-public class PriceServer {
+public class PriceConsumer {
 
     @Autowired
     private final PriceService priceService = new PriceService();

@@ -1,10 +1,8 @@
 package com.example.priceservice.service;
 
-import com.example.priceservice.server.DTO.PriceRequest;
-import com.example.priceservice.server.DTO.PriceResponse;
+import com.example.priceservice.consumer.dto.PriceRequest;
+import com.example.priceservice.consumer.dto.PriceResponse;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PriceService {
