@@ -4,12 +4,15 @@ import com.example.priceservice.consumer.dto.PriceRequest;
 import com.example.priceservice.consumer.dto.PriceResponse;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class PriceService {
 
 
     public PriceResponse sumOfALlValues(PriceRequest priceRequest){
-        return new PriceResponse().setSumOfAllPrices(priceRequest.getPriceList().stream().reduce(0, Integer::sum));
+
+        return new PriceResponse().setTotalPrice(priceRequest.getPriceList().stream().reduce(BigDecimal.ZERO, BigDecimal::add));
     }
 
 }
