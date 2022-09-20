@@ -1,6 +1,7 @@
 package com.example.priceservice.configuration;
 
 
+import com.example.priceservice.consumer.PriceConsumer;
 import com.example.priceservice.service.PriceService;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -14,33 +15,33 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfiguration {
 
     @Value("${routing-key.price}")
-    private String routingKey;
+    private String price_key;
 
 
     @Value("${queue.price}")
-    private String queueName;
+    private String price_queue;
 
 
     @Value("${xchange.name}")
     private String exchangeName;
 
     @Bean
-    public DirectExchange directExchange(){
+    PriceConsumer priceConsumer() {
+        return new PriceConsumer();
+    }
+
+    @Bean
+    public DirectExchange directExchange() {
         return new DirectExchange(exchangeName);
     }
 
     @Bean
-    public Binding binding (){
-        return BindingBuilder.bind(queue()).to(directExchange()).with(routingKey);
+    public Binding binding(Queue priceQueue, DirectExchange directExchange) {
+        return BindingBuilder.bind(priceQueue).to(directExchange).with(price_key);
     }
 
     @Bean
-    public Queue queue(){
-        return new Queue(queueName);
-    }
-
-    @Bean
-    public PriceService getPriceService(){
-        return new PriceService();
+    public Queue queue() {
+        return new Queue(price_queue);
     }
 }

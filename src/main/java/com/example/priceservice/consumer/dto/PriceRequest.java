@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -16,5 +17,5 @@ import java.util.List;
 @Accessors(chain = true)
 public class PriceRequest {
 
-    private List<Integer> priceList;
+    private List<BigDecimal> priceList;
 }
