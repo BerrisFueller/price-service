@@ -12,7 +12,7 @@ public class PriceService {
 
     public PriceResponse sumOfALlValues(PriceRequest priceRequest){
 
-        return new PriceResponse().setTotalPrice(priceRequest.getPriceList().stream().reduce(BigDecimal.ZERO, BigDecimal::add));
+        return new PriceResponse().setPrice(priceRequest.getPriceList().stream().reduce(BigDecimal.ZERO, BigDecimal::add));
     }
 
 }
